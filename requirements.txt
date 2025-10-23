@@ -1,0 +1,22 @@
+# Arquivo: requirements.txt
+
+# --- Core do Django ---
+# A versão exata pode variar, use a que você instalou. 
+# Verifique com: python -m django --version
+Django==5.2.7  
+
+# --- Formulários e Templates ---
+django-crispy-forms==2.1 
+crispy-bootstrap5==2024.1 
+
+# --- Imagens ---
+# Necessário para processar uploads de imagens (AnexoPedido)
+Pillow==10.1.0 
+
+# --- Integração HTMX (Opcional, mas recomendado se usar mais HTMX) ---
+# Ajuda a integrar o backend Django com HTMX de forma mais robusta
+django-htmx==1.17.2 
+
+# --- Banco de Dados ---
+# MySQL:
+mysqlclient==2.2.1

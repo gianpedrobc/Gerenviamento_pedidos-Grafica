@@ -1,0 +1,9 @@
+{% for message in order.messages.all %}
+    <div class="chat-message {% if message.sender == user %}sent{% else %}received{% endif %}">
+        <div class="d-flex justify-content-between align-items-start mb-1">
+            <strong class="small">{{ message.sender.username }}</strong>
+            <small class="text-muted">{{ message.created_at|date:"H:i" }}</small>
+        </div>
+        <p class="mb-0">{{ message.message }}</p>
+    </div>
+{% endfor %}

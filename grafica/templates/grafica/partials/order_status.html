@@ -1,0 +1,18 @@
+{% if user.is_staff %}
+    <form method="post" action="{% url 'update_order_status' order.id %}" 
+          hx-post="{% url 'update_order_status' order.id %}" 
+          hx-target="#status-container">
+        {% csrf_token %}
+        <select name="status" class="form-select" onchange="this.form.submit()">
+            {% for value, label in status_form.fields.status.choices %}
+                <option value="{{ value }}" {% if value == order.status %}selected{% endif %}>
+                    {{ label }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+{% else %}
+    <span class="badge badge-status bg-{% if order.status == 'completed' %}success{% elif order.status == 'cancelled' %}danger{% elif order.status == 'in_production' %}warning{% else %}primary{% endif %}">
+        {{ order.get_status_display }}
+    </span>
+{% endif %}

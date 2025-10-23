@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block title %}Pedido {{ order.order_number }} - PrintShop{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h2 mb-1">{{ order.title }}</h1>
+            <p class="text-muted mb-0">
+                <i class="bi bi-hash"></i> {{ order.order_number }}
+            </p>
+        </div>
+        <div id="status-container">     
+            {% include 'grafica/partials/order_status.html' %}
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-info-circle"></i> Informações do Pedido
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <p class="mb-2"><strong>Cliente:</strong></p>
+                            <p class="text-muted">{{ order.cliente.get_full_name|default:order.cliente.username }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-2"><strong>Prazo de Entrega:</strong></p>
+                            <p class="text-muted">
+                                <i class="bi bi-calendar"></i> {{ order.deadline|date:"d/m/Y" }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-2"><strong>Prioridade:</strong></p>
+                            <span class="badge bg-{% if order.priority == 'urgent' %}danger{% elif order.priority == 'high' %}warning{% else %}secondary{% endif %}">
+                                {{ order.get_priority_display }}
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-2"><strong>Valor Total:</strong></p>
+                            <p class="text-muted fs-5 fw-bold">R$ {{ order.total_price }}</p>
+                        </div>
+                        <div class="col-12">
+                            <p class="mb-2"><strong>Descrição:</strong></p>
+                            <p class="text-muted">{{ order.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="bi bi-list-ul"></i> Itens do Pedido
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço Unit.</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in order.items.all %}
+                                    <tr>
+                                        <td>{{ item.product_name }}</td>
+                                        <td>{{ item.quantity }}</td>
+                                        <td>R$ {{ item.unit_price }}</td>
+                                        <td>R$ {{ item.total_price }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="bi bi-paperclip"></i> Anexos
+                    </h5>
+                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                        <i class="bi bi-upload"></i> Upload
+                    </button>
+                </div>
+                <div class="card-body" id="attachments-list">
+                    {% for attachment in order.attachments.all %}
+                        {% include 'orders/partials/attachment_item.html' %}
+                    {% empty %}
+                        <p class="text-muted text-center">Nenhum anexo ainda</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card sticky-top" style="top: 1rem;">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-chat-dots"></i> Chat
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="chat-container" id="chat-messages">
+                       {% include 'grafica/partials/chat_messages.html' %}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <form method="post" hx-post="{% url 'pedido_detail' order.id %}" 
+                          hx-target="#chat-messages" hx-swap="innerHTML">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            {{ form.message }}
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Upload de Arquivo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="file" class="form-control" required>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="uploadFile()">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const chatContainer = document.getElementById('chat-messages');
+    if (chatContainer) {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+    
+    function uploadFile() {
+        const form = document.getElementById('uploadForm');
+        const formData = new FormData(form);
+        
+        fetch("{% url 'upload_attachment' order.id %}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            }
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block title %}Gráfica Gêmeos - Qualidade e Agilidade desde 2011{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero-carousel .carousel-item {
+        height: 60vh;
+        min-height: 400px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero-carousel .carousel-caption {
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 0.5rem;
+        padding: 1rem;
+    }
+
+    .service-icon {
+        font-size: 3rem;
+        color: var(--bs-primary); 
+    }
+
+    main .container {
+        margin-top: -1.5rem; 
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid px-0 mb-5">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/1920x700/?printing,banner')">
+                <div class="carousel-caption d-none d-md-block text-start p-5">
+                    <h1 class="display-4 fw-bold">Comunicação Visual de Impacto</h1>
+                    <p class="lead">Banners, lonas, adesivos e fachadas que destacam sua marca.</p>
+                    <a href="#servicos" class="btn btn-primary btn-lg">Veja Nossos Serviços</a>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('https://source.unsplash.com/1920x700/?business-card')">
+                <div class="carousel-caption d-none d-md-block p-5">
+                    <h1 class="display-4 fw-bold">Qualidade Premium em Impressos</h1>
+                    <p class="lead">Cartões de visita, flyers e tags com acabamento perfeito.</p>
+                    <a href="#servicos" class="btn btn-primary btn-lg">Veja Nossos Serviços</a>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('https://source.unsplash.com/1920x700/?packaging,design')">
+                <div class="carousel-caption d-none d-md-block text-end p-5">
+                    <h1 class="display-4 fw-bold">Embalagens e Rótulos Personalizados</h1>
+                    <p class="lead">Agregue valor ao seu produto com adesivos, sacolas e tags.</p>
+                    <a href="#servicos" class="btn btn-primary btn-lg">Veja Nossos Serviços</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+</div>
+
+<div class="container">
+
+    <section id="servicos" class="my-5">
+        <h2 class="text-center display-4 fw-bold mb-5">Nossos Serviços</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-person-vcard service-icon mb-3"></i>
+                        <h4 class="card-title fw-bold">Cartões de Visita e Tags</h4>
+                        <p class="card-text text-muted">Apresente sua marca com profissionalismo. Diversos acabamentos e papéis especiais.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-sticky-fill service-icon mb-3"></i>
+                        <h4 class="card-title fw-bold">Adesivos e Rótulos</h4>
+                        <p class="card-text text-muted">Em vinil ou papel, com corte especial. Perfeito para produtos, embalagens e decoração.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-aspect-ratio-fill service-icon mb-3"></i>
+                        <h4 class="card-title fw-bold">Banners, Lonas e Fachadas</h4>
+                        <p class="card-text text-muted">Impressão em grande formato para comunicação visual interna e externa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-file-earmark-text-fill service-icon mb-3"></i>
+                        <h4 class="card-title fw-bold">Folhetos e Cardápios</h4>
+                        <p class="card-text text-muted">Divulgue seu negócio ou seu menu com materiais de alta qualidade e dobras especiais.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-bag-check-fill service-icon mb-3"></i>
+                        <h4 class="card-title fw-bold">Sacolas Personalizadas</h4>
+                        <p class="card-text text-muted">Fortaleça sua marca com sacolas em papel ou plástico personalizadas com seu logo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-receipt-cutoff service-icon mb-3"></i>
+                        <h4 class="card-title fw-bold">Talões e Comandas</h4>
+                        <p class="card-text text-muted">Pedidos, recibos, comandas e blocos de anotação com papel autocopiativo ou comum.</p>
+                    </div>
+                </div>
+            </div>
+           <div class="col-md-6 col-lg-4">
+                <div class="card h-100 text-center p-3 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-shirt"></i>
+                        <h4 class="card-title fw-bold">Personalização de Camisa</h4>
+                        <p class="card-text text-muted">Estampe sua marca ou ideia em camisetas. Perfeito para uniformes, eventos e brindes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-nos" class="my-5 py-5 bg-light rounded-3">
+        <div class="row g-5 align-items-center px-4">
+            <div class="col-lg-6">
+                <img src="https://i.pinimg.com/736x/33/38/68/333868cd8669593d56f41c62aa352288.jpg" alt="Equipe da Gráfica Gêmeos" class="img-fluid rounded-3 shadow-sm">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="display-5 fw-bold">Nossa História</h2>
+                <p class="lead text-muted">Qualidade e Agilidade desde 2011.</p>
+                <p>A Gráfica Gêmeos nasceu da paixão por transformar ideias em realidade impressa. Ao longo de mais de uma década, investimos em tecnologia e em uma equipe qualificada para oferecer o melhor em impressões digitais e offset.</p>
+                <p>Nossa missão é simples: entregar seu material com a máxima qualidade e a agilidade que seu negócio precisa. Entendemos que cada projeto é único e oferecemos um atendimento próximo para garantir sua total satisfação.</p>
+                <div class="d-flex gap-4 mt-4">
+                    <div class="text-center">
+                        <i class="bi bi-check-circle-fill display-4 text-success"></i>
+                        <h5 class="fw-bold mt-2">Qualidade</h5>
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-rocket-takeoff-fill display-4 text-primary"></i>
+                        <h5 class="fw-bold mt-2">Agilidade</h5>
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-headset display-4 text-secondary"></i>
+                        <h5 class="fw-bold mt-2">Atendimento</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+<section class="container-fluid bg-dark text-white text-center p-5 mt-5">
+    <div class="container">
+        <h2 class="display-5 fw-bold">Pronto para começar seu pedido?</h2>
+        <p class="lead my-4">Crie sua conta ou faça login em nosso sistema. Por lá, você pode enviar arquivos,
+            acompanhar o status do seu pedido em tempo real e falar diretamente com nossa equipe.</p>
+        <div class="d-flex gap-3 justify-content-center">
+            <a href="{% url 'signup' %}" class="btn btn-primary btn-lg">
+                <i class="bi bi-person-plus"></i> Criar Conta
+            </a>
+            <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg">
+                <i class="bi bi-box-arrow-in-right"></i> Entrar
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

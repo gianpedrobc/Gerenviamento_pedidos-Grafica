@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Cadastro - PrintShop{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center py-5">
+        <div class="col-lg-5">
+            <div class="card shadow">
+                <div class="card-body p-5">
+                    <h2 class="card-title text-center mb-4">
+                        <i class="bi bi-person-plus-fill text-primary"></i> Criar Conta
+                    </h2>
+                    <p class="text-center text-muted mb-4">
+                        Preencha os dados abaixo para criar sua conta
+                    </p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        
+                        <button type="submit" class="btn btn-primary w-100 py-2 mt-3">
+                            <i class="bi bi-check-circle"></i> Cadastrar
+                        </button>
+                    </form>
+                    
+                    <hr class="my-4">
+                    
+                    <p class="text-center mb-0">
+                        Já tem uma conta? 
+                        <a href="{% url 'login' %}" class="text-decoration-none">
+                            Faça login
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

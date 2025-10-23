@@ -1,0 +1,7 @@
+<div class="d-flex justify-content-between align-items-center p-2 border-bottom">
+    <div>
+        <i class="bi bi-file-earmark"></i>
+        <a href="{{ attachment.file.url }}" target="_blank">{{ attachment.filename }}</a>
+    </div>
+    <small class="text-muted">{{ attachment.uploaded_at|date:"d/m/Y" }}</small>
+</div>
