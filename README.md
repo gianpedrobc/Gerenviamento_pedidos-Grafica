@@ -75,8 +75,8 @@ O sistema atua em duas frentes principais:
 
 ```bash
 # 1. Clone o repositório
-git clone https://seu-repositorio-aqui.git
-cd nome-do-projeto
+git clone https://github.com/gianpedrobc/Gerenviamento_pedidos-Grafica.git
+cd Gerenviamento_pedidos-Grafica
 
 # 2. Crie e ative o ambiente virtual
 python -m venv venv
