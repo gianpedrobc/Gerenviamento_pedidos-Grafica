@@ -98,7 +98,7 @@ python manage.py createsuperuser
 
 # 6. Execute o servidor
 python manage.py runserver
-
+```
 ## 🗺️ 5. Estrutura e Navegação (Sitemap)
 
 | Caminho | Descrição |
