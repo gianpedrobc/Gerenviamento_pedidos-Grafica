@@ -161,3 +161,24 @@ Utiliza **Bootstrap Icons v1.11.3** para consistência visual em todo o sistema.
 | **Frontend** | Bootstrap 5.3, HTMX 1.9 |
 | **Banco de Dados** | SQLite (dev) / PostgreSQL (produção) |
 | **Linguagem** | Python 3.10+ |
+
+
+---
+## Imagens: 
+
+<p align="center">
+  <img src="midia-readme/home.jpg" alt="Home" width="700">
+</p>
+<p align="center">
+  <img src="midia-readme/login.jpg" alt="login" width="700">
+</p>
+<p align="center">
+  <img src="midia-readme/perfil.jpg" alt="perfil" width="700">
+</p>
+<p align="center">
+  <img src="midia-readme/pedidos.jpg" alt="pedidos" width="700">
+</p>
+
+<p align="center">
+  <img src="midia-readme/gerente-dastboard.jpg" alt="gerente-dastboard" width="700">
+</p>
