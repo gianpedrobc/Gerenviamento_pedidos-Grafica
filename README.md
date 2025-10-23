@@ -161,22 +161,3 @@ Utiliza **Bootstrap Icons v1.11.3** para consistência visual em todo o sistema.
 | **Frontend** | Bootstrap 5.3, HTMX 1.9 |
 | **Banco de Dados** | SQLite (dev) / PostgreSQL (produção) |
 | **Linguagem** | Python 3.10+ |
-
----
-
-## 🧱 9. Estrutura de Pastas (Exemplo)
-
-```plaintext
-Grafica/
-│
-├── manage.py
-├── requirements.txt
-├── README.md
-│
-├── core/                # Configurações e rotas principais
-├── clientes/            # App de usuários/clientes
-├── pedidos/             # App de pedidos e gestão
-├── estoque/             # App de controle de materiais
-│
-├── static/              # CSS, JS, Imagens
-└── templates/           # Templates HTML (Bootstrap)
